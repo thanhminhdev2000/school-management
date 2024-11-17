@@ -1,6 +1,3 @@
-// npx prisma db seed
-// npx prisma studio
-
 import { Day, PrismaClient, UserSex } from '@prisma/client';
 const prisma = new PrismaClient();
 
