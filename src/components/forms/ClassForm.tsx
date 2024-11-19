@@ -1,7 +1,7 @@
 'use client';
 
 import { createClass, updateClass } from '@/lib/actions';
-import { ClassSchema, classSchema } from '@/lib/formValidationSchemas';
+import { classSchema, ClassSchema } from '@/lib/formValidationSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect } from 'react';
@@ -28,8 +28,6 @@ const ClassForm = ({
   } = useForm<ClassSchema>({
     resolver: zodResolver(classSchema),
   });
-
-  // AFTER REACT 19 IT'LL BE USEACTIONSTATE
 
   const [state, formAction] = useFormState(type === 'create' ? createClass : updateClass, {
     success: false,

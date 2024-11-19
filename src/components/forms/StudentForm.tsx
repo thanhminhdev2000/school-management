@@ -1,7 +1,7 @@
 'use client';
 
 import { createStudent, updateStudent } from '@/lib/actions';
-import { StudentSchema, studentSchema } from '@/lib/formValidationSchemas';
+import { studentSchema, StudentSchema } from '@/lib/formValidationSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CldUploadWidget } from 'next-cloudinary';
 import Image from 'next/image';
@@ -39,8 +39,6 @@ const StudentForm = ({
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log('hello');
-    console.log(data);
     formAction({ ...data, img: img?.secure_url });
   });
 

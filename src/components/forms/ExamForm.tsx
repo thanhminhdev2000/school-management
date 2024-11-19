@@ -1,7 +1,7 @@
 'use client';
 
 import { createExam, updateExam } from '@/lib/actions';
-import { ExamSchema, examSchema } from '@/lib/formValidationSchemas';
+import { examSchema, ExamSchema } from '@/lib/formValidationSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect } from 'react';
@@ -28,8 +28,6 @@ const ExamForm = ({
   } = useForm<ExamSchema>({
     resolver: zodResolver(examSchema),
   });
-
-  // AFTER REACT 19 IT'LL BE USEACTIONSTATE
 
   const [state, formAction] = useFormState(type === 'create' ? createExam : updateExam, {
     success: false,

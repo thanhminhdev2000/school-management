@@ -29,15 +29,12 @@ const SubjectForm = ({
     resolver: zodResolver(subjectSchema),
   });
 
-  // AFTER REACT 19 IT'LL BE USEACTIONSTATE
-
   const [state, formAction] = useFormState(type === 'create' ? createSubject : updateSubject, {
     success: false,
     error: false,
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     formAction(data);
   });
 

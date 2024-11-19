@@ -56,7 +56,7 @@ const TeacherListPage = async ({ searchParams }: { searchParams: { [key: string]
   ];
 
   const renderRow = (item: TeacherList) => (
-    <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight">
+    <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-PurpleLight">
       <td className="flex items-center gap-4 p-4">
         <Image
           src={item.img || '/noAvatar.png'}
@@ -78,7 +78,7 @@ const TeacherListPage = async ({ searchParams }: { searchParams: { [key: string]
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-Sky">
               <Image src="/view.png" alt="" width={16} height={16} />
             </button>
           </Link>

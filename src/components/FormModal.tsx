@@ -1,6 +1,5 @@
 'use client';
 
-import { FormContainerProps } from '@/components/FormContainer';
 import { deleteClass, deleteExam, deleteStudent, deleteSubject, deleteTeacher } from '@/lib/actions';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -8,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { toast } from 'react-toastify';
+import { FormContainerProps } from './FormContainer';
 
 const deleteActionMap = {
   subject: deleteSubject,
@@ -15,7 +15,6 @@ const deleteActionMap = {
   teacher: deleteTeacher,
   student: deleteStudent,
   exam: deleteExam,
-
   parent: deleteSubject,
   lesson: deleteSubject,
   assignment: deleteSubject,
@@ -40,6 +39,7 @@ const ClassForm = dynamic(() => import('./forms/ClassForm'), {
 const ExamForm = dynamic(() => import('./forms/ExamForm'), {
   loading: () => <h1>Loading...</h1>,
 });
+// TODO: OTHER FORMS
 
 const forms: {
   [key: string]: (
@@ -69,7 +69,7 @@ const forms: {
 
 const FormModal = ({ table, type, data, id, relatedData }: FormContainerProps & { relatedData?: any }) => {
   const size = type === 'create' ? 'w-8 h-8' : 'w-7 h-7';
-  const bgColor = type === 'create' ? 'bg-lamaYellow' : type === 'update' ? 'bg-lamaSky' : 'bg-lamaPurple';
+  const bgColor = type === 'create' ? 'bg-Yellow' : type === 'update' ? 'bg-Sky' : 'bg-Purple';
 
   const [open, setOpen] = useState(false);
 

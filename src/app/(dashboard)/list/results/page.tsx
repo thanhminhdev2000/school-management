@@ -66,7 +66,7 @@ const ResultListPage = async ({ searchParams }: { searchParams: { [key: string]:
   ];
 
   const renderRow = (item: ResultList) => (
-    <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight">
+    <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-PurpleLight">
       <td className="flex items-center gap-4 p-4">{item.title}</td>
       <td>{item.studentName + ' ' + item.studentName}</td>
       <td className="hidden md:table-cell">{item.score}</td>
