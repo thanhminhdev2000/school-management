@@ -1,6 +1,5 @@
 'use client';
 
-import { calendarEvents } from '@/lib/data';
 import moment from 'moment';
 import { useState } from 'react';
 import { Calendar, momentLocalizer, View, Views } from 'react-big-calendar';
@@ -18,7 +17,7 @@ const BigCalendar = () => {
   return (
     <Calendar
       localizer={localizer}
-      events={calendarEvents}
+      events={[]}
       startAccessor="start"
       endAccessor="end"
       views={['work_week', 'day']}

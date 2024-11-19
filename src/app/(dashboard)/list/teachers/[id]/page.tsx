@@ -2,11 +2,38 @@ import Announcements from '@/components/Announcements';
 import BigCalendar from '@/components/BigCalender';
 import FormModal from '@/components/FormModal';
 import Performance from '@/components/Performance';
-import { role } from '@/lib/data';
+import prisma from '@/lib/prisma';
+import { auth } from '@clerk/nextjs/server';
+import { Teacher } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-const SingleTeacherPage = () => {
+const SingleTeacherPage = async ({ params: { id } }: { params: { id: string } }) => {
+  const { sessionClaims } = await auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+
+  const teacher:
+    | (Teacher & {
+        _count: { subjects: number; lessons: number; classes: number };
+      })
+    | null = await prisma.teacher.findUnique({
+    where: { id },
+    include: {
+      _count: {
+        select: {
+          subjects: true,
+          lessons: true,
+          classes: true,
+        },
+      },
+    },
+  });
+
+  if (!teacher) {
+    return notFound();
+  }
+
   return (
     <div className="flex-1 p-4 flex flex-col gap-4 xl:flex-row">
       <div className="w-full xl:w-2/3">
